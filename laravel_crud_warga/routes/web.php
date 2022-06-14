@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\Controllers\WargaController;
+// use App\http\About
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/warga', [WargaController::class,'index']);
+Route::get('/warga/create', [WargaController::class, 'create']);
+Route::post('/warga/store', [WargaController::class, 'store']);
