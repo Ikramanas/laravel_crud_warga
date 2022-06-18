@@ -14,14 +14,28 @@
             <th>nama</th>
             <th>alamat</th>
             <th>jenis kelamin</th>
+            <th>nomor telepon</th>
+            <th>email</th>
+            <th>Aksi</th>
         </tr>
         @foreach( $warga as $w)
         <tr>
             <td>{{$w->nama}}</td>
             <td>{{$w->alamat}}</td>
             <td>{{$w->jenis_kelamin}}</td>
-        </tr>
+            <td>{{$w->nomor_telepon}}</td>
+            <td>{{$w->email}}</td>
+            <td>
+                <a href="{{route('warga.edit',$w->id)}}">Edit</a> <br>
+                <form action="{{route('warga.hapus' ,$w->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')   
+                    <input type="submit" value="Hapus">
+                </form>                  
+
+            </tr>
         @endforeach
+
     </table>
 </body>
 </html>

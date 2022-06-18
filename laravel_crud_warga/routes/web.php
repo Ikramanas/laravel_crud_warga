@@ -20,6 +20,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/warga', [WargaController::class,'index']);
+Route::get('/warga', [WargaController::class,'index'])->name('warga.index');
 Route::get('/warga/create', [WargaController::class, 'create']);
-Route::post('/warga/store', [WargaController::class, 'store']);
+Route::get('/warga/edit/{id}', [WargaController::class, 'edit'])->name('warga.edit');
+Route::post('/warga/store', [WargaController::class, 'store'])->name('warga-store');
+Route::put('/warga/update/{id}', [WargaController::class, 'update'])->name('warga.update');
+Route::delete('/warga/hapus/{id}', [WargaController::class, 'destroy'])->name('warga.hapus');
