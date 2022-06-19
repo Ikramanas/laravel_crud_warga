@@ -19,10 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
+// Route::get('register', 'App\Http\Controllers\AuthController@register')->name('register');
+Route::post('loginProcess', 'App\Http\Controllers\AuthController@proses_login')->name('loginProcess');
+Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
-Route::get('/warga', [WargaController::class,'index'])->name('warga.index');
-Route::get('/warga/create', [WargaController::class, 'create']);
-Route::get('/warga/edit/{id}', [WargaController::class, 'edit'])->name('warga.edit');
-Route::post('/warga/store', [WargaController::class, 'store'])->name('warga-store');
-Route::put('/warga/update/{id}', [WargaController::class, 'update'])->name('warga.update');
-Route::delete('/warga/hapus/{id}', [WargaController::class, 'destroy'])->name('warga.hapus');
+Route::group(['middleware' => ['auth','role']], function ()
+{
+    Route::get('/warga', [WargaController::class,'index'])->name('warga.index');
+    Route::get('/warga/create', [WargaController::class, 'create']);
+    Route::get('/warga/edit/{id}', [WargaController::class, 'edit'])->name('warga.edit');
+    Route::post('/warga/store', [WargaController::class, 'store'])->name('warga-store');
+    Route::put('/warga/update/{id}', [WargaController::class, 'update'])->name('warga.update');
+    Route::delete('/warga/hapus/{id}', [WargaController::class, 'destroy'])->name('warga.hapus');
+});
+
