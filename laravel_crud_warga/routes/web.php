@@ -20,8 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
-// Route::get('register', 'App\Http\Controllers\AuthController@register')->name('register');
-Route::post('loginProcess', 'App\Http\Controllers\AuthController@proses_login')->name('loginProcess');
+Route::post('proses_login', 'App\Http\Controllers\LoginController@proses')->name('proses_login');
 Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
 Route::group(['middleware' => ['auth','role']], function ()
