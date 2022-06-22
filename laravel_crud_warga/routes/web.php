@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\WargaController;
+use App\Http\Controllers\WargaController;
+use App\Http\Controllers\LoginController;
 // use App\http\About
 
 /*
@@ -21,9 +22,9 @@ Route::get('/', function () {
 
 Route::get('login', 'App\Http\Controllers\LoginController@index')->name('login');
 Route::post('proses_login', 'App\Http\Controllers\LoginController@proses')->name('proses_login');
-Route::get('logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth','role']], function ()
+Route::group(['middleware' => ['auth', 'login:admin']], function ()
 {
     Route::get('/warga', [WargaController::class,'index'])->name('warga.index');
     Route::get('/warga/create', [WargaController::class, 'create']);

@@ -19,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input name="password" type="text" class="form-control-sm" id="exampleFormControlInput1" placeholder="Masukkan Password">
+            <input name="password" type="password" class="form-control-sm" id="exampleFormControlInput1" placeholder="Masukkan Password">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-3">Login</button>
